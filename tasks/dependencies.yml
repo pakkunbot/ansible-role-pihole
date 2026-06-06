@@ -6,7 +6,7 @@
   register: pihole_upd_result
   until: pihole_upd_result is succeeded
   when:
-  - "'Debian' in ansible_os_family"
+  - "'Debian' in ansible['os_family']"
   - not pihole_docker
   tags:
   - pihole
@@ -76,9 +76,9 @@
   - pihole
   - pihole_dependencies
 
-- name: "[dependencies] Add user {{ ansible_user_id }} to 'docker' group"
+- name: "[dependencies] Add user {{ ansible['user_id'] }} to 'docker' group"
   user:
-    name: "{{ ansible_user_id }}"
+    name: "{{ ansible['user_id'] }}"
     groups: docker
     append: yes
   become: yes
