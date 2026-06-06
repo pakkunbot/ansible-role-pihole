@@ -48,7 +48,7 @@
 - name: '[install] Set cron job for daily pihole updates'
   cron:
     name: "daily pihole updater"
-    user: "{{ ansible_user_id }}"
+    user: "{{ ansible['user_id'] }}"
     minute: "0"
     hour: "4"
     job: "/usr/local/bin/pihole -up"
